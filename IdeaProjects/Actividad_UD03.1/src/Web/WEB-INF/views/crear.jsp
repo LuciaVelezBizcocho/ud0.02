@@ -1,14 +1,18 @@
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Crear empleado</title>
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/CSS/estilos.css">
-    <title>Crear empleado</title>
 </head>
+
 <body>
+
+<div class="container">
+
     <h1>Nuevo empleado</h1>
 
     <form action="${pageContext.request.contextPath}/empleados"
@@ -16,45 +20,37 @@
 
         <input type="hidden" name="accion" value="crear">
 
-        <p>
-            Nombre:
-            <input type="text" name="nombre"
-                   minlength="2" maxlength="20" required>
-        </p>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"
+               minlength="2" maxlength="20" required>
 
-        <p>
-            DNI:
-            <input type="text" name="dni"
-                   minlength="9" maxlength="9" required>
-        </p>
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni"
+               minlength="9" maxlength="9" required>
 
-        <p>
-            Sexo:
-            <select name="sexo" required>
-                <option value="m">Masculino</option>
-                <option value="f">Femenino</option>
-            </select>
-        </p>
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+        </select>
 
-        <p>
-            Años trabajados:
-            <input type="number" name="anyos"
-                   min="0" required>
-        </p>
+        <label for="anyos">Años trabajados:</label>
+        <input type="number" id="anyos" name="anyos" min="0" required>
 
-        <p>
-            Categoría:
-            <input type="number" name="categoria"
-                   min="1" max="10" required>
-        </p>
+        <label for="categoria">Categoría:</label>
+        <input type="number" id="categoria" name="categoria"
+               min="1" max="10" required>
 
         <button type="submit">Guardar empleado</button>
+
     </form>
 
-    <p>
-        <a href="${pageContext.request.contextPath}/index.jsp">
-            Volver al menú
-        </a>
-    </p>
+    <button class="volver"
+            onclick="window.location.href='${pageContext.request.contextPath}/index.jsp'">
+        Volver al menú
+    </button>
+
+</div>
+
 </body>
 </html>

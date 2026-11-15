@@ -9,7 +9,7 @@ public class ConexionBD {
     private static final String URL = "jdbc:mariadb://localhost:3306/nominas";
 
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "123456";
+    private static final String PASSWORD = "-----";
 
     public static Connection conectar() throws SQLException {
         try {

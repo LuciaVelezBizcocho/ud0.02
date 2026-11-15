@@ -1,8 +1,8 @@
 package org.example.Prueba.Laboral.BD;
 
 import org.example.Prueba.Laboral.Exception.DatosNoCorrectosException;
-import org.example.Prueba.Laboral.Empleado;
-import org.example.Prueba.Laboral.Nomina;
+import org.example.Prueba.Laboral.modelo.Empleado;
+import org.example.Prueba.Laboral.modelo.Nomina;
 
 
 import java.sql.*;

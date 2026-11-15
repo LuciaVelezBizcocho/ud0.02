@@ -1,19 +1,13 @@
 package org.example.Prueba.Laboral;
 
 import org.example.Prueba.Laboral.BD.EmpleadoDAO;
-import org.example.Prueba.Laboral.BD.GestorNominas;
 import org.example.Prueba.Laboral.Exception.DatosNoCorrectosException;
+import org.example.Prueba.Laboral.modelo.Empleado;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CalculaNomina {
-    private static String escribe(Empleado e1, Empleado e2) {
-        Nomina n1 = new Nomina();
-        Nomina n2 = new Nomina();
-
-        return "Empleado: " + e1 + "Sueldo: " + n1.sueldo(e1) + "Empleado: " + e2 + "Sueldo: " + n2.sueldo(e2);
-    }
 
     private static int leerEntero(Scanner sc) {
         try {
@@ -67,7 +61,7 @@ public class CalculaNomina {
                         break;
                     default: System.out.println("Opción no válida.");
                 }
-            } catch (DatosNoCorrectosException ex) {
+            } catch (DatosNoCorrectosException | IllegalArgumentException ex) {
                 System.out.println("Dato incorrecto: " + ex.getMessage());
             }
         } while (op != 0);
@@ -76,9 +70,8 @@ public class CalculaNomina {
         System.out.println("Empleado actualizado.");
     }
 
-    public static void main(String[] args) throws DatosNoCorrectosException {
+    public static void main(String[] args) {
         EmpleadoDAO dao = new EmpleadoDAO();
-        GestorNominas gestor = new GestorNominas();
         Scanner sc = new Scanner(System.in);
 
         int opcion;
@@ -96,8 +89,7 @@ public class CalculaNomina {
                 System.out.println("0. Salir");
                 System.out.print("Seleccione una opción: ");
 
-                opcion = sc.nextInt();
-                sc.nextLine();
+                opcion = leerEntero(sc);
 
                 switch (opcion) {
                     case 1:
@@ -136,7 +128,7 @@ public class CalculaNomina {
                         System.out.println("Opción no válida.");
                 }
             }while (opcion != 0);
-        } catch (SQLException | DatosNoCorrectosException ex) {
+        } catch (SQLException | DatosNoCorrectosException | IllegalArgumentException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
 

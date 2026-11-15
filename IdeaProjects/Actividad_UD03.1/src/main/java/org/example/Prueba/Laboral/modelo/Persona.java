@@ -1,4 +1,4 @@
-package org.example.Prueba.Laboral;
+package org.example.Prueba.Laboral.modelo;
 
 import org.example.Prueba.Laboral.Exception.DatosNoCorrectosException;
 

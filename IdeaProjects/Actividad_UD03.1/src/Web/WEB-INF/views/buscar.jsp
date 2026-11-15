@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Buscar empleados</title>
-
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/CSS/estilos.css">
 </head>
@@ -23,21 +22,14 @@
     <form action="${pageContext.request.contextPath}/empleados"
           method="post">
 
-        <input type="hidden"
-               name="accion"
-               value="buscarEmpleados">
+        <input type="hidden" name="accion" value="buscarEmpleados">
 
         <label for="nombre">Nombre:</label>
-        <input type="text"
-               id="nombre"
-               name="nombre"
+        <input type="text" id="nombre" name="nombre"
                placeholder="Nombre del empleado">
 
         <label for="dni">DNI:</label>
-        <input type="text"
-               id="dni"
-               name="dni"
-               maxlength="9"
+        <input type="text" id="dni" name="dni" maxlength="9"
                placeholder="DNI del empleado">
 
         <label for="sexo">Sexo:</label>
@@ -48,23 +40,14 @@
         </select>
 
         <label for="categoria">Categoría:</label>
-        <input type="number"
-               id="categoria"
-               name="categoria"
-               min="1"
-               max="10"
-               placeholder="Entre 1 y 10">
+        <input type="number" id="categoria" name="categoria"
+               min="1" max="10" placeholder="Entre 1 y 10">
 
         <label for="anyos">Años trabajados:</label>
-        <input type="number"
-               id="anyos"
-               name="anyos"
-               min="0"
-               placeholder="Años trabajados">
+        <input type="number" id="anyos" name="anyos"
+               min="0" placeholder="Años trabajados">
 
-        <button type="submit">
-            Buscar empleados
-        </button>
+        <button type="submit">Buscar empleados</button>
 
     </form>
 

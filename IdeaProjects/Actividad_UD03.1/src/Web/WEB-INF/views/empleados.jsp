@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.Prueba.Laboral.Empleado" %>
+<%@ page import="org.example.Prueba.Laboral.modelo.Empleado" %>
 
 <%
-    List<Empleado> lista =
-        (List<Empleado>) request.getAttribute("lista");
+    List<Empleado> lista = (List<Empleado>) request.getAttribute("lista");
+    String msg = request.getParameter("msg");
 %>
 
 <!DOCTYPE html>
@@ -12,7 +12,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Listado de empleados</title>
-
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/CSS/estilos.css">
 </head>
@@ -23,6 +22,12 @@
 
     <h1>Listado de empleados</h1>
 
+    <% if ("creado".equals(msg)) { %>
+    <p class="info">Empleado creado correctamente.</p>
+    <% } else if ("actualizado".equals(msg)) { %>
+    <p class="info">Empleado actualizado correctamente.</p>
+    <% } %>
+
     <table>
 
         <tr>
@@ -31,27 +36,33 @@
             <th>Sexo</th>
             <th>Categoría</th>
             <th>Años trabajados</th>
+            <th>Acciones</th>
         </tr>
 
         <% if (lista != null && !lista.isEmpty()) {
             for (Empleado e : lista) { %>
 
-                <tr>
-                    <td><%= e.getNombre() %></td>
-                    <td><%= e.getDni() %></td>
-                    <td><%= e.getSexo() %></td>
-                    <td><%= e.getCategoria() %></td>
-                    <td><%= e.getAnyos() %></td>
-                </tr>
+        <tr>
+            <td><%= e.getNombre() %></td>
+            <td><%= e.getDni() %></td>
+            <td><%= e.getSexo() %></td>
+            <td><%= e.getCategoria() %></td>
+            <td><%= e.getAnyos() %></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/empleados?accion=editar&dni=<%= e.getDni() %>">
+                    Editar
+                </a>
+            </td>
+        </tr>
 
         <%  }
-           } else { %>
+        } else { %>
 
-                <tr>
-                    <td colspan="5">
-                        No hay empleados registrados.
-                    </td>
-                </tr>
+        <tr>
+            <td colspan="6">
+                No hay empleados registrados.
+            </td>
+        </tr>
 
         <% } %>
 

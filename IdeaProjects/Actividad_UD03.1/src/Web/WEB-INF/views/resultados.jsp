@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.Prueba.Laboral.Empleado" %>
+<%@ page import="org.example.Prueba.Laboral.modelo.Empleado" %>
 
 <%
-    List<Empleado> lista =
-        (List<Empleado>) request.getAttribute("lista");
+    List<Empleado> lista = (List<Empleado>) request.getAttribute("lista");
 %>
 
 <!DOCTYPE html>
@@ -12,7 +11,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Resultados de búsqueda</title>
-
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/CSS/estilos.css">
 </head>
@@ -31,27 +29,33 @@
             <th>Sexo</th>
             <th>Categoría</th>
             <th>Años trabajados</th>
+            <th>Acciones</th>
         </tr>
 
         <% if (lista != null && !lista.isEmpty()) {
             for (Empleado e : lista) { %>
 
-                <tr>
-                    <td><%= e.getNombre() %></td>
-                    <td><%= e.getDni() %></td>
-                    <td><%= e.getSexo() %></td>
-                    <td><%= e.getCategoria() %></td>
-                    <td><%= e.getAnyos() %></td>
-                </tr>
+        <tr>
+            <td><%= e.getNombre() %></td>
+            <td><%= e.getDni() %></td>
+            <td><%= e.getSexo() %></td>
+            <td><%= e.getCategoria() %></td>
+            <td><%= e.getAnyos() %></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/empleados?accion=editar&dni=<%= e.getDni() %>">
+                    Editar
+                </a>
+            </td>
+        </tr>
 
         <%  }
-           } else { %>
+        } else { %>
 
-                <tr>
-                    <td colspan="5">
-                        No se encontraron empleados.
-                    </td>
-                </tr>
+        <tr>
+            <td colspan="6">
+                No se han encontrado empleados.
+            </td>
+        </tr>
 
         <% } %>
 
@@ -62,8 +66,8 @@
         Volver a buscar
     </button>
 
-    <button
-        onclick="window.location.href='${pageContext.request.contextPath}/index.jsp'">
+    <button class="volver"
+            onclick="window.location.href='${pageContext.request.contextPath}/index.jsp'">
         Volver al menú
     </button>
 

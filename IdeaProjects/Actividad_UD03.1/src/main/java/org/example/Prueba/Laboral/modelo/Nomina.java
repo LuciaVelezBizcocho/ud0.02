@@ -1,6 +1,4 @@
-package org.example.Prueba.Laboral;
-
-import org.example.Prueba.Laboral.Empleado;
+package org.example.Prueba.Laboral.modelo;
 
 public class Nomina {
 
